@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Layout from "./components/Layout";
+import useSavedMovies from "./hooks/save";
+import ConfirmPage from "./pages/ConfirmPage";
+import ReviewPage from "./pages/ReviewPage";
+import SearchPage from "./pages/SearchPage";
 
-function App() {
+const App = () => {
+  // Simple navigation state field
+  const [activePage, setActivePage] = useState("search");
+  const { savedMovies, saveMovie, unsaveMovie } = useSavedMovies();
+
+  const gotoPage = (page: string) => {
+    if (["search", "review", "confirm"].includes(page)) {
+      setActivePage(page);
+    }
+  };
+
+  const commonProps = { gotoPage, savedMovies, saveMovie, unsaveMovie };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {activePage === "search" && <SearchPage {...commonProps} />}
+      {activePage === "review" && <ReviewPage {...commonProps} />}
+      {activePage === "confirm" && <ConfirmPage {...commonProps} />}
+    </Layout>
   );
-}
+};
 
 export default App;
