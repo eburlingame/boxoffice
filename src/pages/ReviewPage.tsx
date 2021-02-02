@@ -25,7 +25,7 @@ const ReviewPage = ({
     if (savedMovies.length === 0) {
       gotoPage("search");
     }
-  }, [savedMovies]);
+  }, [gotoPage, savedMovies]);
 
   return (
     <Layout>

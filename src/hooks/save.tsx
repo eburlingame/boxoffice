@@ -12,8 +12,6 @@ const useSavedMovies = () => {
     setSaved((list) => list.filter((m: Movie) => m.imdbId !== movie.imdbId));
   };
 
-  console.log(savedMovies);
-
   return { savedMovies, saveMovie, unsaveMovie };
 };
 

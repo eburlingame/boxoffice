@@ -89,7 +89,7 @@ const SearchPage = ({
         <div className="w-full">
           <MovieListContainer>
             {results.map((movie) => (
-              <MovieItemContainer>
+              <MovieItemContainer key={movie.imdbId}>
                 <MovieDetails movie={movie} />
 
                 <SaveToggleButton
