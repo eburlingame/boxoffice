@@ -9,3 +9,4 @@ This app was bootstrapped using `create-react-app`.
    - `npm install` or `yarn install`
 3. Start the server:
    - `npm start` or `yarn start`
+4. Go to `http://localhost:3000`
